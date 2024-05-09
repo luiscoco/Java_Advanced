@@ -20,7 +20,7 @@ Summary:
 
 - Reactive Spring Data JPA
 
-## 1. Functional Interfaces and Method References
+## 1. Lambda Expression, Functional Interfaces and Method References
 
 ### 1.1. A Lambda Expression
 
@@ -68,9 +68,7 @@ If you have more than one argument:
 Comparator<String> c = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
 ```
 
-## 1.3. What Is the Type of a Lambda Expression?
-
-**What is a functional interface?**
+## 1.3. Functional Interface
 
 A functional interface is one interface with only one abstract method (methods from class Object do not count)
 
@@ -107,3 +105,16 @@ The annotation is here just for convenience, as the compiler will tell me whethe
 ## Package java.util.function
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/08a6f283-b861-49c1-bf5f-67bee8e98f62)
+
+## Omitting Parameter
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/eb42d68c-d366-479b-a1d5-260a4ccac7e8)
+
+## 1.4. Method References
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/74c2e424-4298-441d-bead-aad422b585b0)
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/20579c83-8af3-4221-9007-f11d20d34fdc)
+
+
+
