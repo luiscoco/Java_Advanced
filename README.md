@@ -22,7 +22,7 @@ Summary:
 
 ## 1. Lambda Expression, Functional Interfaces and Method References
 
-### 1.1. A Lambda Expression
+## 1.1. A Lambda Expression
 
 Let’s use an anonymous class
 
@@ -44,7 +44,7 @@ FileFilter filter = (File file) -> file.getName().endsWith(".java");
 
 This is a lambda expression.
 
-### 1.2. Several Ways of Writing a Lambda Expression
+## 1.2. Several Ways of Writing a Lambda Expression
 
 The simplest way:
 
