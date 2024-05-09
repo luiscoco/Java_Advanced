@@ -116,5 +116,9 @@ The annotation is here just for convenience, as the compiler will tell me whethe
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/20579c83-8af3-4221-9007-f11d20d34fdc)
 
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/0e334b77-d695-4547-840d-65b5cddadb8c)
 
+## Reference to an Instance Method of an Arbitrary Object of a Particular Type
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/115367ee-7036-4357-9ec5-3ddf8ca6094f)
 
