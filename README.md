@@ -2,7 +2,7 @@
 
 Summary:
 
-- Functional Java: functional interfaces, streams
+- Functional Java: lambda expression, functional interfaces, streams
 
 - Executor framework and Fork Join pool
 
