@@ -125,3 +125,20 @@ The annotation is here just for convenience, as the compiler will tell me whethe
 ## Reference to Constructor
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/65dc8eaa-e0b6-4b64-9206-61d61b060429)
+
+## 1.5. Data Streams
+
+What is a **Stream**?
+
+•	An object on which one can define operations
+
+•	An object that does not hold any data
+
+•	An object that should not change the data it processes
+
+•	An object able to process data in « one pass »
+
+•	An object optimized from the algorithm point of view, and able to process data in parallel
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/9a493946-01a3-48fd-a9ca-c2618734d01f)
+
