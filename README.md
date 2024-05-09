@@ -22,5 +22,23 @@ Summary:
 
 ## 1. Functional Interfaces and Method References
 
+Let’s use an anonymous class
+
+```java
+FileFilter fileFilter = new FileFilter() { @Override
+public boolean accept(File file) {
+return file.getName().endsWith(".java");
+}
+};
+```
+
+We take the parameters and return:
+
+```java
+FileFilter filter = (File file) -> file.getName().endsWith(".java");
+```
+
+This is a lambda expression.
+
 
 
