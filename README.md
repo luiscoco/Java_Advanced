@@ -22,6 +22,8 @@ Summary:
 
 ## 1. Functional Interfaces and Method References
 
+### 1.1. A Lambda Expression
+
 Let’s use an anonymous class
 
 ```java
@@ -42,5 +44,27 @@ FileFilter filter = (File file) -> file.getName().endsWith(".java");
 
 This is a lambda expression.
 
+### 1.2. Several Ways of Writing a Lambda Expression
 
+The simplest way:
+
+```java
+FileFilter filter = (File file) -> file.getName().endsWith(".java");
+```
+
+If you have more than one line of code:
+
+```java
+Runnable r = () -> {
+  for (int i = 0; i < 5; i++) {
+     System.out.println("Hello world!");
+  }
+};
+```
+
+If you have more than one argument:
+
+```java
+Comparator<String> c = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
+```
 
