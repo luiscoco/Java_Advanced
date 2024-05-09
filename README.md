@@ -25,10 +25,12 @@ Summary:
 Let’s use an anonymous class
 
 ```java
-FileFilter fileFilter = new FileFilter() { @Override
-public boolean accept(File file) {
-return file.getName().endsWith(".java");
-}
+FileFilter fileFilter = new FileFilter() {
+  @Override
+  public boolean accept(File file)
+  {
+    return file.getName().endsWith(".java");
+  }
 };
 ```
 
