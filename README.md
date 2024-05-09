@@ -70,7 +70,7 @@ Comparator<String> c = (String s1, String s2) -> Integer.compare(s1.length(), s2
 
 ## 1.3. What Is the Type of a Lambda Expression?
 
-What is a functional interface?
+**What is a functional interface?**
 
 A functional interface is one interface with only one abstract method (methods from class Object do not count)
 
@@ -87,3 +87,23 @@ public interface FileFilter {
   boolean accept(File pathname);
 }
 ```
+
+A functional interface can be annotated:
+
+```java
+@FunctionalInterface
+public interface MyFunctionalInterface {
+  someMethod();
+  /**
+  * Some more documentation
+  */  equals(Object o);
+};
+```
+
+The annotation is here just for convenience, as the compiler will tell me whether the interface is functional or not
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/e764e1ec-c897-4489-82b7-79a73e34c303)
+
+**Package java.util.function**
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/08a6f283-b861-49c1-bf5f-67bee8e98f62)
