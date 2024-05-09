@@ -122,3 +122,6 @@ The annotation is here just for convenience, as the compiler will tell me whethe
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/115367ee-7036-4357-9ec5-3ddf8ca6094f)
 
+## Reference to Constructor
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/65dc8eaa-e0b6-4b64-9206-61d61b060429)
