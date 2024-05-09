@@ -68,3 +68,22 @@ If you have more than one argument:
 Comparator<String> c = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
 ```
 
+## 1.3. What Is the Type of a Lambda Expression?
+
+What is a functional interface?
+
+A functional interface is one interface with only one abstract method (methods from class Object do not count)
+
+```java
+public interface Runnable {
+  run();
+}
+
+public interface Comparator<T> {
+  int compareTo(T t1, T t2);
+}
+
+public interface FileFilter {
+  boolean accept(File pathname);
+}
+```
