@@ -142,3 +142,6 @@ What is a **Stream**?
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/9a493946-01a3-48fd-a9ca-c2618734d01f)
 
+How to Create a Stream?
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/7b4167d0-bb0b-4727-8dcc-69e01f365611)
