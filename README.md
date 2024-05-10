@@ -186,6 +186,15 @@ public class PredicateExample {
 A Function takes one argument and produces a result
 
 ```java
+package java.util.function;
+
+@FunctionalInterface
+public interface Function<T, R> {
+  R apply(T t);
+}
+```
+
+```java
 import java.util.function.Function;
 
 public class FunctionExample {
@@ -199,6 +208,15 @@ public class FunctionExample {
 ### 1.3.4. Consumer / BiConsumer
 
 A Consumer performs an operation on a single argument, whereas a BiConsumer takes two arguments
+
+```java
+package java.util.function;
+
+@FunctionalInterface
+public interface Consumer<T> {
+  void accept(T t);
+}
+```
 
 ```java
 import java.util.function.Consumer;
