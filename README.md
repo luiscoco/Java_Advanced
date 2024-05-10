@@ -1062,9 +1062,28 @@ System.out.println(resultAndThen);
 The **identity** function returns a function that **returns its input argument**
 
 ```java
-Function<String, String> identityFunction = Function.identity();
-String resultIdentity = identityFunction.apply("Hello World");
-System.out.println(resultIdentity);  // Outputs "Hello World"
+import java.util.function.Function;     // Import the Function interface
+import java.util.function.UnaryOperator; // Import the UnaryOperator interface
+
+class HelloWorld {
+    public static void main(String[] args) {
+        // Using Function.identity() to create an identity function
+        Function<String, String> identityFunction = Function.identity();
+        // Applying the identity function to a string
+        String resultIdentity = identityFunction.apply("Hello World");
+        // Outputting the result
+        System.out.println(resultIdentity);  // Outputs "Hello World"
+
+        // Example usage of the print method with a UnaryOperator
+        print(10, x -> x + 5);  // This will output 15
+        print(10, UnaryOperator.identity());  // This will output 10
+    }
+
+    // A helper method to print the result of applying the UnaryOperator to a given value
+    private static void print(int value, UnaryOperator<Integer> operator) {
+        System.out.println(operator.apply(value));
+    }
+}
 ```
 
 **Another sample**
