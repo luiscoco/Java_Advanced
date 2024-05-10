@@ -20,7 +20,7 @@ H. Spring WebFlux (Reactor)
 
 I. Reactive Spring Data JPA
 
-## 1. Lambda Expression, Functional Interfaces and Method References
+## 1. Lambda Expression, Functional Interfaces, Method References, Streams
 
 ## 1.1. A Lambda Expression
 
