@@ -627,17 +627,17 @@ Stream<Person> filtered = stream.filter(person -> person.getAge() > 20);
 ```
 
 ```java
-Predicate<Person> p = person -> person.getAge() > 20;
+Predicate<Person> p=person->person.getAge()>20;
 ```
 
 ```java
-Predicate<Integer>	p1	=	i	->	i	> 20;
-Predicate<Integer>	p2	=	i	->	i	< 30;
-Predicate<Integer>	p3	=	i	->	i	== 0;
+Predicate<Integer> p1=i->i>20;
+Predicate<Integer> p2=i->i<30;
+Predicate<Integer> p3=i->i==0;
 
 
-Predicate<Integer>	p = p1.and(p2).or(p3); // (p1 && p2) || p3	
-Predicate<Integer>	p = p3.or(p1).and(p2); // p3 || (p1 && p2)	=>	(p3 OR p1) && p2
+Predicate<Integer> p=p1.and(p2).or(p3); // (p1 && p2) || p3	
+Predicate<Integer> p=p3.or(p1).and(p2); // p3 || (p1 && p2)	=>	(p3 OR p1) && p2
 ```
 
 ### Example using Predicate<Person>
