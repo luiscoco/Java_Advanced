@@ -1596,7 +1596,49 @@ public class Main {
 **Example 7: Collecting in a String**
 
 ```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
+// Define the Person class with age and lastName properties
+class Person {
+    private int age;
+    private String lastName;
+
+    public Person(int age, String lastName) {
+        this.age = age;
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a list of persons
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person(25, "Smith"));
+        persons.add(new Person(19, "Johnson"));
+        persons.add(new Person(30, "Williams"));
+        persons.add(new Person(18, "Jones"));
+        persons.add(new Person(22, "Brown"));
+
+        // Use a stream to filter, map, and collect the last names into a single string
+        String result = persons.stream()
+                               .filter(person -> person.getAge() > 20)
+                               .map(Person::getLastName)
+                               .collect(Collectors.joining(", "));
+
+        // Print the result
+        System.out.println(result);
+    }
+}
 ```
 
 **Example 8: Collecting in a Map**
