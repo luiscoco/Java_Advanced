@@ -111,10 +111,6 @@ Supplier<String> sayHi = () -> "hi";
 sayHi.get(); //hi
 ```
 
-## Package java.util.function
-
-
-
 ## Omitting Parameter
 
 ```java
@@ -128,6 +124,8 @@ Comparator<String> c = (s1, s2) -> Integer.compare(s1.length(), s2.length());
 ### 1.3.1. Supplier
 
 A Supplier provides a result of a given type. It does not accept any arguments
+
+Definition of java.util.function.Supplier
 
 ```java
 package java.util.function;
@@ -161,6 +159,15 @@ public class SupplierExample {
 ### 1.3.2. Predicate
 
 A Predicate takes one argument and returns a boolean
+
+```java
+package java.util.function;
+
+@FunctionalInterface
+public interface Predicate<T> {
+  boolean test(T t);
+}
+```
 
 ```java
 import java.util.function.Predicate;
