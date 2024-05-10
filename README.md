@@ -100,7 +100,7 @@ public interface MyFunctionalInterface {
 
 The annotation is here just for convenience, as the compiler will tell me whether the interface is functional or not
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/17bd8b54-bbd0-40c4-a522-ee01c684015b)
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/0d359f74-4c5f-45d3-94e7-87bdfb03fac7)
 
 ```java
 Predicate<Integer> isAdult = age -> age >= 18:
