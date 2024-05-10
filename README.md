@@ -340,30 +340,65 @@ Stream<String> stream = Stream.generate(() -> "test").limit(10);
 
 ## 1.6. Map, Filter, Reduce
 
-Let’s take a list of Person:
+### 1.6.1. Map
+
+The map operation applies a function to each element in a stream and collects the results into a new stream
 
 ```java
-List<Person> list = new ArrayList<>() ;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamMapExample {
+    public static void main(String[] args) {
+        List<String> words = Arrays.asList("hello", "world", "java", "stream");
+        List<String> upperCaseWords = words.stream()
+                                           .map(String::toUpperCase)
+                                           .collect(Collectors.toList());
+        System.out.println(upperCaseWords);
+    }
+}
 ```
 
-Suppose we want to compute the "average of the age of people older than 20"
+## 1.6.2. Filter
 
-Let’s first convert it into stream…
+The filter operation uses a predicate to test each element in the stream and includes only those that pass the test
 
 ```java
-List<Person> persons = new ArrayList<>() ;
-persons.stream()
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamFilterExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        List<Integer> evenNumbers = numbers.stream()
+                                           .filter(n -> n % 2 == 0)
+                                           .collect(Collectors.toList());
+        System.out.println(evenNumbers);
+    }
+}
 ```
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/b59c438c-209b-4b4b-aae1-7b15d3aad893)
+## 1.6.3. Reduce
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/8412180f-b0b1-419d-95c5-fb768a4dc790)
+The reduce operation combines all elements in the stream to produce a single summary result
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/3e38bf4b-0834-4937-a58d-036244df804c)
+This operation takes two parameters: an initial value and a binary operator
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/5326c0eb-785e-4de3-aca8-dee47edeb515)
+```java
+import java.util.Arrays;
+import java.util.List;
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/655d5cd8-c693-4b3d-864a-cdd84877402f)
+public class StreamReduceExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        int sum = numbers.stream()
+                         .reduce(0, Integer::sum);
+        System.out.println("Sum of numbers: " + sum);
+    }
+}
+```
 
 ## 1.7. foreach (consumer)
 
