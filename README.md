@@ -360,7 +360,7 @@ public class StreamMapExample {
 }
 ```
 
-## 1.6.2. Filter
+### 1.6.2. Filter
 
 The filter operation uses a predicate to test each element in the stream and includes only those that pass the test
 
@@ -380,7 +380,7 @@ public class StreamFilterExample {
 }
 ```
 
-## 1.6.3. Reduce
+### 1.6.3. Reduce
 
 The reduce operation combines all elements in the stream to produce a single summary result
 
@@ -440,5 +440,23 @@ Predicate<String> p1 = s -> s.length() < 20;
 Predicate<String> p2 = s -> s.length() > 10;
 
 Predicate<String> p3 = p1.and(p2);
+```
+
+## 1.10. Predicate.isEqual()
+
+```java
+Predicate<String> id = Predicate.isEqual(target);
+```
+
+## 1.11. Predicates
+
+```java
+List<String> list = new ArrayList<>();
+Stream<Person> stream = list.stream();
+Stream<Person> filtered = stream.filter(person -> person.getAge() > 20);
+```
+
+```java
+Predicate<Person> p = person -> person.getAge() > 20;
 ```
 
