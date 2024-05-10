@@ -1064,3 +1064,16 @@ Function<String, String> identityFunction = Function.identity();
 String resultIdentity = identityFunction.apply("Hello World");
 System.out.println(resultIdentity);  // Outputs "Hello World"
 ```
+
+**Another sample**
+
+```java
+UnaryOperator<Integer> f1 = a->a+1;
+UnaryOperator<Integer> f2 = a->a*2; int x = 1;
+System.out.println(f1.andThen(f2).apply(x));	// f2(f1(x)) =4
+System.out.println(f1.compose(f2).apply(x));	// f1(f2(x)) =3
+UnaryOperator<Integer> f3 = UnaryOperator.identity(); print(10, f1);
+print(10, UnaryOperator.identity()); print(10, z->z);
+```
+
+
