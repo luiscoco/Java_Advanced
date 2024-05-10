@@ -1150,3 +1150,85 @@ This is the output:
 10
 10
 ```
+
+## 1.16. map and flatmap methods from the Stream interface in Java
+
+**Using map Method**
+
+The **map** method is used to **apply a function to each element of a stream** and returns a stream consisting of the results
+
+Below is a simple Java application that demonstrates using map to square each number in a list of integers:
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.function.Function;
+
+public class MapExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // Using map to square each element in the list
+        List<Integer> squaredNumbers = numbers.stream()
+                                              .map(x -> x * x)
+                                              .collect(Collectors.toList());
+
+        // Print the result
+        System.out.println(squaredNumbers);
+    }
+}
+```
+
+This is the output:
+
+```
+[1, 4, 9, 16, 25]
+```
+
+**Using flatMap Method**
+
+The **flatMap** method is used to flatten streams resulting from mapping each element of the original stream into zero or more elements
+
+Here's a Java application that demonstrates using flatMap to flatten a list of lists of integers:
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.function.Function;
+
+public class FlatMapExample {
+    public static void main(String[] args) {
+        List<List<Integer>> listOfLists = Arrays.asList(
+            Arrays.asList(1, 2),
+            Arrays.asList(3, 4, 5),
+            Arrays.asList(6, 7, 8, 9)
+        );
+
+        // Using flatMap to flatten a list of lists into a single list
+        List<Integer> flatList = listOfLists.stream()
+                                            .flatMap(List::stream)
+                                            .collect(Collectors.toList());
+
+        // Print the result
+        System.out.println(flatList);
+    }
+}
+```
+
+This is the output:
+
+```
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+**Explanation**
+
+**map Method**: It takes a function (```Function<T, R>```) that transforms each element T of the stream into an element R. In the example, we square each integer
+
+**flatMap Method**: It takes a function (```Function<T, Stream<R>>```) that transforms each element T of the stream into a Stream<R>
+
+This method is very useful for flattening nested structures like lists of lists
