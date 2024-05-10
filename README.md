@@ -862,3 +862,43 @@ The **forEach()** method is a terminal operation that triggers the processing an
 **Note**: While **peek()** is useful for debugging or operations on mutable objects, using it to modify the internal state of an element (as shown in the second example)
 
 is generally discouraged because it can lead to code that is harder to understand and maintain. For such modifications, a map() operation might often be more appropriate and semantically clear
+
+## 1.13. Java's Stream API operations types: intermediate or terminal operations
+
+In Java's Stream API, operations can be classified into two types: **intermediate operations** and **terminal operations**.
+
+**Intermediate operations** are those that transform a stream into another stream. They are used to set up a pipeline of operations, but they do not produce any results by themselves
+
+Instead, they allow for further operations to be performed on the transformed stream
+
+Here's why intermediate operations are essential and how the ones you mentioned function:
+
+**Intermediate vs Terminal Operations**:
+
+**Intermediate operations** are "**lazy**," meaning they don't actually perform any processing until a terminal operation is invoked
+
+They are generally used **to prepare the data or set up certain conditions or transformations**.
+
+**Terminal operations**, like forEach, cause the stream to be processed and results to be produced. They are "eager" because they immediately trigger the stream processing
+
+**forEach(Consumer)**:
+
+**Not Lazy**: This is a terminal operation, not an intermediate operation. It eagerly processes the elements of the stream using the provided Consumer function. Each element is taken from the stream and the Consumer action is applied immediately. Since it processes all the elements in the stream as soon as it's called, it's considered eager or not lazy
+
+**peek(Consumer)**:
+
+**Lazy**: This is an intermediate operation that allows you to perform a specific action on each element of the stream as they are consumed from the resulting stream. However, peek is only executed when a terminal operation is triggered on the stream. This makes it lazy, as the actual computation or action (in this case, the Consumer action in peek) doesn't occur until absolutely necessary
+
+**filter(Predicate)**:
+
+**Lazy**: Also an intermediate operation, filter uses a Predicate to test each element of the stream and only allows elements that pass the predicate test to be included in the resulting stream. Like peek, the filtering action isn't actually performed until a terminal operation triggers the stream processing
+
+The purpose of having lazy intermediate operations is efficiency. This "laziness" allows Java to optimize operations by:
+
+Reducing the number of iterations: Multiple operations can be merged and applied in a single pass
+
+Minimizing work: Operations that might not affect the outcome (like a filter followed by a findFirst) don't need to process all elements
+
+Short-circuiting: Operations can stop early if the terminal operation allows it (like anyMatch, findFirst, etc.)
+
+Thus, intermediate operations provide a powerful way to build up complex chains of transformations without wasting resources, executing only when the final results are needed
