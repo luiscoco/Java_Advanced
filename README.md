@@ -478,8 +478,6 @@ What is a **Stream**?
 
 •	An object optimized from the algorithm point of view, and able to process data in parallel
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/9a493946-01a3-48fd-a9ca-c2618734d01f)
-
 ## How to Create a Stream?
 
 Using static method Stream.of():
