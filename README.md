@@ -385,8 +385,6 @@ Arrays.sort(rosterAsArray, Person::compareByAge);
 
 The **method reference Person::compareByAge** is semantically the **same as the lambda expression (a, b) -> Person.compareByAge(a, b)**
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/0e334b77-d695-4547-840d-65b5cddadb8c)
-
 This table categorizes and exemplifies the different **types of method references** in Java,
 
 which are used to simplify the syntax of lambda expressions when a method already exists to perform the operation
