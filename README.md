@@ -1351,3 +1351,100 @@ public class GroupingAndSummingExample {
     }
 }
 ```
+
+## 1.18. Optional class in Java
+
+Java's Optional class is a container object used to contain not-null objects
+
+It is especially useful for handling cases where a value may be absent without resorting to checking for null
+
+I'll provide you with several Java application samples demonstrating various ways to use Optional along with the isPresent method and other common patterns
+
+**Example 1: Basic Use of Optional**
+
+This example demonstrates the basic use of Optional to handle the presence or absence of a string value.
+
+```java
+import java.util.Optional;
+
+public class OptionalBasicExample {
+    public static void main(String[] args) {
+        Optional<String> opt = Optional.of("Hello World");
+
+        if (opt.isPresent()) {
+            String s = opt.get();
+            System.out.println("Value is present: " + s);
+        } else {
+            System.out.println("Value is absent");
+        }
+
+        // Example of an empty Optional
+        Optional<String> emptyOpt = Optional.empty();
+        if (emptyOpt.isPresent()) {
+            System.out.println("This won't print");
+        } else {
+            System.out.println("Value is absent");
+        }
+    }
+}
+```
+
+**Example 2: Using Optional with Default Value**
+
+This example shows how to use Optional with a default value if the original Optional is empty. This approach is often cleaner than using isPresent() and get()
+
+```java
+import java.util.Optional;
+
+public class OptionalWithDefault {
+    public static void main(String[] args) {
+        Optional<String> opt = Optional.empty();
+
+        // Using orElse to provide a default value if the Optional is empty
+        String s = opt.orElse("Default Value");
+        System.out.println(s);  // Output: Default Value
+    }
+}
+```
+
+**Example 3: Using Optional in Conditional Operations**
+
+This example demonstrates how Optional can be integrated into a more functional style of programming, reducing the need for explicit conditional checks
+
+```java
+import java.util.Optional;
+
+public class OptionalFunctionalStyle {
+    public static void main(String[] args) {
+        Optional<String> opt = Optional.ofNullable(null);
+
+        // Using ifPresent to perform an action if the value is present
+        opt.ifPresent(s -> System.out.println("Value: " + s));
+
+        // Using orElseGet to compute a default value via a supplier function
+        String result = opt.orElseGet(() -> "Computed Default");
+        System.out.println(result);  // Output: Computed Default
+    }
+}
+```
+
+**Example 4: Combining Optional with Stream API**
+
+This example shows how Optional can be used with Java's Stream API to handle potential null values gracefully in a data processing pipeline
+
+```java
+import java.util.Optional;
+import java.util.stream.Stream;
+
+public class OptionalWithStream {
+    public static void main(String[] args) {
+        Optional<String> opt = Optional.of("Filtered Value");
+
+        // Using Optional with Stream for conditional processing
+        Stream<String> stream = opt.map(Stream::of).orElseGet(Stream::empty);
+        stream.filter(s -> s.contains("Value"))
+              .forEach(System.out::println);  // Output: Filtered Value
+    }
+}
+```
+
