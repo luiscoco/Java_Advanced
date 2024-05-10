@@ -102,6 +102,15 @@ The annotation is here just for convenience, as the compiler will tell me whethe
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/e764e1ec-c897-4489-82b7-79a73e34c303)
 
+```java
+Predicate<Integer> isAdult = age -> age >= 18:
+isAdult.test(10);
+Consumer<String> printer = p -> System.out.println("Printed: "+p);
+printer.accept("hi");
+Supplier<String> sayHi = () -> "hi";
+sayHi.get(); //hi
+```
+
 ## Package java.util.function
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/08a6f283-b861-49c1-bf5f-67bee8e98f62)
