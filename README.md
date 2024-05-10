@@ -1032,13 +1032,26 @@ The **compose** method allows you to **combine functions**
 It returns a new function that first applies the given function and then applies the current function to the result
 
 ```java
-Function<Integer, Integer> multiplyBy2 = x -> x * 2;
-Function<Integer, Integer> subtract3 = x -> x - 3;
+import java.util.function.Function;
 
-// First subtract 3, then multiply by 2
-Function<Integer, Integer> combinedFunction = multiplyBy2.compose(subtract3);
-Integer resultCompose = combinedFunction.apply(10); // (10 - 3) * 2 = 14
-System.out.println(resultCompose);
+public class FunctionCompositionApp {
+    public static void main(String[] args) {
+        // Function to multiply its input by 2
+        Function<Integer, Integer> multiplyBy2 = x -> x * 2;
+
+        // Function to subtract 3 from its input
+        Function<Integer, Integer> subtract3 = x -> x - 3;
+
+        // Compose the functions: first subtract 3, then multiply by 2
+        Function<Integer, Integer> combinedFunction = multiplyBy2.compose(subtract3);
+
+        // Apply the composed function to the input 10
+        Integer resultCompose = combinedFunction.apply(10); // (10 - 3) * 2 = 14
+
+        // Print the result
+        System.out.println(resultCompose);
+    }
+}
 ```
 
 **andThen Method Example**
@@ -1048,13 +1061,26 @@ The **andThen** method **chains the current function to another one**
 The current function is applied first, followed by the specified function
 
 ```java
-Function<Integer, Integer> add5 = x -> x + 5;
-Function<Integer, Integer> multiplyBy3 = x -> x * 3;
+import java.util.function.Function;
 
-// First add 5, then multiply by 3
-Function<Integer, Integer> combinedAndThen = add5.andThen(multiplyBy3);
-Integer resultAndThen = combinedAndThen.apply(4); // (4 + 5) * 3 = 27
-System.out.println(resultAndThen);
+public class FunctionChainingApp {
+    public static void main(String[] args) {
+        // Function to add 5 to its input
+        Function<Integer, Integer> add5 = x -> x + 5;
+
+        // Function to multiply its input by 3
+        Function<Integer, Integer> multiplyBy3 = x -> x * 3;
+
+        // Combine the two functions: first add 5, then multiply by 3
+        Function<Integer, Integer> combinedAndThen = add5.andThen(multiplyBy3);
+
+        // Apply the combined function to the input 4
+        Integer resultAndThen = combinedAndThen.apply(4);  // (4 + 5) * 3 = 27
+
+        // Print the result
+        System.out.println(resultAndThen);
+    }
+}
 ```
 
 **identity Method Example**
