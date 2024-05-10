@@ -1643,8 +1643,145 @@ public class Main {
 
 **Example 8: Collecting in a Map**
 
-```java
+Example: Grouping Persons by Age into Lists
 
+This example groups Person objects into a map where each key is the age, and the value is a list of Person objects of that age
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+class Person {
+    private int age;
+    private String name;
+
+    public Person(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person(25, "Alice"));
+        persons.add(new Person(22, "Bob"));
+        persons.add(new Person(25, "Carol"));
+        persons.add(new Person(30, "David"));
+
+        Map<Integer, List<Person>> result = persons.stream()
+            .filter(person -> person.getAge() > 20)
+            .collect(Collectors.groupingBy(Person::getAge));
+
+        System.out.println(result);
+    }
+}
 ```
 
-## 1.20. 
+**Example : Counting Persons by Age**
+
+This example counts the number of Person objects for each age
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+class Person {
+    private int age;
+    private String name;
+
+    public Person(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person(25, "Alice"));
+        persons.add(new Person(22, "Bob"));
+        persons.add(new Person(25, "Carol"));
+        persons.add(new Person(30, "David"));
+
+        Map<Integer, Long> result = persons.stream()
+            .filter(person -> person.getAge() > 20)
+            .collect(Collectors.groupingBy(Person::getAge, Collectors.counting()));
+
+        System.out.println(result);
+    }
+}
+```
+
+Example : Joining Names of Persons by Age
+
+Note: The third request seems to have an error because Collectors.joining() is not applicable directly for non-string stream elements in a groupingBy
+
+It needs a mapping step. Here is the corrected version:
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+class Person {
+    private int age;
+    private String name;
+
+    public Person(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person(25, "Alice"));
+        persons.add(new Person(22, "Bob"));
+        persons.add(new Person(25, "Carol"));
+        persons.add(new Person(30, "David"));
+
+        Map<Integer, String> result = persons.stream()
+            .filter(person -> person.getAge() > 20)
+            .collect(Collectors.groupingBy(Person::getAge,
+                Collectors.mapping(Person::getName, Collectors.joining(", "))));
+
+        System.out.println(result);
+    }
+}
+```
+
+## 1.20. Special Stream Types
+
+
+
