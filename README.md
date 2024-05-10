@@ -986,3 +986,81 @@ In this case, the **map** operation extracts the email from each User object by 
 Stream mapping is a powerful tool in Java for data transformation
 
 By using the map function, you can transform a stream of items into another form efficiently, enabling cleaner and more maintainable code for operations that involve data manipulation
+
+## 1.15. Mapping operations
+
+The **Function<T, R>** interface is a **built-in interface** in **Java**, which is part of the **java.util.function** package
+
+This package includes several functional interfaces that are intended for use with **Java 8's** lambda expressions and method references
+
+The Function interface is designed to represent a function that accepts one argument and produces a result
+
+The methods you mentioned—apply, compose, andThen, and identity—are all part of its standard definition in Java. Here’s a brief rundown of these methods:
+
+**apply(T t)**: This is the primary abstract method of the interface, taking an input of type T and returning a result of type R
+
+**compose(Function<V, T> before)**: This default method allows for function composition, where the function passed as an argument is applied first, and then the function on which compose is called is applied to the result
+
+**andThen(Function<R, V> after)**: This default method works opposite to compose. The function on which andThen is called is applied first, and then the function passed as an argument is applied
+
+**identity()**: This static method returns a function that always returns its input argument
+
+It is useful when a functional transformation needs to effectively do nothing to the passed argument
+
+These methods make Function a versatile interface for creating and chaining together transformations on data in a functional style, which can be particularly powerful when working with streams or other API that leverage functional programming concepts
+
+**Some samples**
+
+**apply Method Example**
+
+The **apply** method is the **primary abstract method of the Function interface**
+
+It takes one argument and returns a result
+
+```java
+Function<Integer, Double> squareRoot = x -> Math.sqrt(x);
+Double result = squareRoot.apply(16);  // result will be 4.0
+System.out.println(result);
+```
+
+**compose Method Example**
+
+The **compose** method allows you to **combine functions**
+
+It returns a new function that first applies the given function and then applies the current function to the result
+
+```java
+Function<Integer, Integer> multiplyBy2 = x -> x * 2;
+Function<Integer, Integer> subtract3 = x -> x - 3;
+
+// First subtract 3, then multiply by 2
+Function<Integer, Integer> combinedFunction = multiplyBy2.compose(subtract3);
+Integer resultCompose = combinedFunction.apply(10); // (10 - 3) * 2 = 14
+System.out.println(resultCompose);
+```
+
+**andThen Method Example**
+
+The **andThen** method **chains the current function to another one**
+
+The current function is applied first, followed by the specified function
+
+```java
+Function<Integer, Integer> add5 = x -> x + 5;
+Function<Integer, Integer> multiplyBy3 = x -> x * 3;
+
+// First add 5, then multiply by 3
+Function<Integer, Integer> combinedAndThen = add5.andThen(multiplyBy3);
+Integer resultAndThen = combinedAndThen.apply(4); // (4 + 5) * 3 = 27
+System.out.println(resultAndThen);
+```
+
+**identity Method Example**
+
+The **identity** function returns a function that **returns its input argument**
+
+```java
+Function<String, String> identityFunction = Function.identity();
+String resultIdentity = identityFunction.apply("Hello World");
+System.out.println(resultIdentity);  // Outputs "Hello World"
+```
