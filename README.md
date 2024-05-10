@@ -387,13 +387,82 @@ The **method reference Person::compareByAge** is semantically the **same as the 
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/0e334b77-d695-4547-840d-65b5cddadb8c)
 
-## Reference to an Instance Method of an Arbitrary Object of a Particular Type
+This table categorizes and exemplifies the different **types of method references** in Java,
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/115367ee-7036-4357-9ec5-3ddf8ca6094f)
+which are used to simplify the syntax of lambda expressions when a method already exists to perform the operation
 
-## Reference to Constructor
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/2602e7eb-8a20-4763-b25c-2de77547b72b)
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/65dc8eaa-e0b6-4b64-9206-61d61b060429)
+Here are simple Java examples for each **type of method reference** described:
+
+**Reference to a Static Method**
+
+```java
+import java.util.function.Function;
+
+public class Utils {
+    public static String toUpperCase(String input) {
+        return input.toUpperCase();
+    }
+
+    public static void main(String[] args) {
+        Function<String, String> upperFunc = Utils::toUpperCase;
+        System.out.println(upperFunc.apply("hello"));
+    }
+}
+```
+
+**Reference to an Instance Method of a Particular Object**
+
+```java
+import java.util.function.Supplier;
+
+public class Example {
+    private String message = "Hello, World!";
+
+    public String getMessage() {
+        return message;
+    }
+
+    public static void main(String[] args) {
+        Example example = new Example();
+        Supplier<String> messageSupplier = example::getMessage;
+        System.out.println(messageSupplier.get());
+    }
+}
+```
+
+**Reference to an Instance Method of an Arbitrary Object of a Particular Type**
+
+```java
+import java.util.List;
+import java.util.function.Consumer;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie");
+        Consumer<String> action = String::toLowerCase;
+        names.forEach(name -> System.out.println(action.accept(name)));
+    }
+}
+```
+
+**Note**: This example demonstrates invoking the toLowerCase method on each string element of the list individually. It prints the name in lower case.
+
+**Reference to a Constructor**
+
+```java
+import java.util.function.Function;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        Function<Integer, ArrayList<String>> listCreator = ArrayList::new;
+        ArrayList<String> strings = listCreator.apply(10); // Initializes an ArrayList with initial capacity of 10
+        System.out.println(strings);
+    }
+}
+```
 
 ## 1.5. Data Streams
 
