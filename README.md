@@ -563,5 +563,50 @@ The PredicatePersonExample filters persons based on their age being greater than
 
 The PredicateIntegerExample demonstrates how to chain and combine predicates to create more complex conditions for filtering integers, which include checking whether numbers are between 20 and 30 or equal to 0
 
+### Another Predicate sample
+
+```java
+Predicate<String> p = Predicate.isEqual("two") ;
+Stream<String> stream1 = Stream.of("one", "two", "three");
+Stream<String> stream2 = stream1.filter(p.negate()) ;
+```
+
+**First: Creating a Predicate**
+
+```java
+Predicate<String> p = Predicate.isEqual("two");
+```
+
+This line creates a Predicate<String> instance named p
+
+The Predicate.isEqual("two") method returns a predicate that tests whether an object is equal to the string "two"
+
+In this case, the predicate will return true for any string that exactly matches "two"
+
+**Creating a Stream**
+
+```java
+Stream<String> stream1 = Stream.of("one", "two", "three");
+```
+
+This line creates a Stream<String> containing three strings: "one", "two", and "three"
+
+Streams are a sequence of elements supporting sequential and parallel aggregate operations
+
+**Applying the Predicate**
+
+```java
+Stream<String> stream2 = stream1.filter(p.negate());
+```
+
+Here, the filter method is used on the stream1 object, which contains the three strings
+
+The filter method takes a predicate to determine which elements should remain in the resulting stream
+
+In this case, p.negate() is used, which returns a predicate that is the logical negation of the original predicate p
+
+**p.negate() will therefore return true for any string that is not "two"**
+
+Hence, it filters out the string "two" and keeps strings that do not match "two"
 
 
