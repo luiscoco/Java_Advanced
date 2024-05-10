@@ -1846,3 +1846,74 @@ public class LongStreamExample {
     }
 }
 ```
+
+**More samples**
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class StreamExamples {
+
+    public static void main(String[] args) {
+        // Convert a list of string numbers to integers and find the maximum value
+        List<String> ls = Arrays.asList("1", "2", "3");
+        OptionalInt ints = ls.stream().mapToInt(Integer::parseInt).max();
+        int optInt = ls.stream().mapToInt(Integer::parseInt).max().orElse(5);
+
+        if (ints.isPresent()) {
+            System.out.println("Maximum value: " + ints.getAsInt());
+        } else {
+            System.out.println("No maximum value found, default: " + optInt);
+        }
+
+        // Create a list of integers from a range
+        List<Integer> numbers = IntStream.range(1, 3).boxed()
+                                         .collect(Collectors.toList());
+        System.out.println("Numbers from range: " + numbers);
+
+        // Find the maximum value in a static list of integers
+        OptionalInt max = IntStream.of(5, 10).max();
+        max.ifPresent(value -> System.out.println("Maximum of 5 and 10: " + value));
+
+        // Generate a stream of 10 ones, ensure distinct values and get the first
+        OptionalInt one = IntStream.generate(() -> 1)
+                                   .limit(10)
+                                   .distinct()
+                                   .findFirst();
+        one.ifPresent(value -> System.out.println("Generated value: " + value));
+
+        // Iterate with a seed and a function, generating a sequence
+        List<Integer> seededNumbers = IntStream.iterate(0, n -> n + 3)
+                                               .limit(3)
+                                               .boxed()
+                                               .collect(Collectors.toList());
+        System.out.println("Iterated numbers: " + seededNumbers);
+
+        // Create streams using IntStream.builder and concatenate them
+        IntStream first = IntStream.builder().add(10).add(20).build();
+        IntStream second = IntStream.builder().add(10).build();
+        IntStream third = IntStream.concat(first, second);
+
+        // Print concatenated stream
+        System.out.print("Concatenated stream values: ");
+        third.forEach(val -> System.out.print(val + " "));
+        System.out.println(); // Add newline after stream output
+    }
+}
+```
+
+This is the output:
+
+```
+Maximum value: 3
+Numbers from range: [1, 2]
+Maximum of 5 and 10: 10
+Generated value: 1
+Iterated numbers: [0, 3, 6]
+Concatenated stream values: 10 20 10 
+```
+
