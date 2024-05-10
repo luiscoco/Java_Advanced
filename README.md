@@ -1232,3 +1232,122 @@ This is the output:
 **flatMap Method**: It takes a function (```Function<T, Stream<R>>```) that transforms each element T of the stream into a Stream<R>
 
 This method is very useful for flattening nested structures like lists of lists
+
+## 1.17. Aggregation and Reduction
+
+In Java, **aggregation** and **reduction** are powerful operations typically performed on data structures like arrays, collections, and especially streams
+
+These operations allow you to **summarize or reduce a set of values to a single value**
+
+Here are some examples demonstrating these concepts using Java's Stream API
+
+**Example 1: Summing a List of Integers (Reduction)**
+
+This example demonstrates how to use the reduce method to calculate the sum of a list of integers
+
+The reduce method is a general-purpose reduction operation
+
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class ReductionExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // Using reduce to sum all numbers
+        int sum = numbers.stream()
+                         .reduce(0, (a, b) -> a + b);
+
+        // Print the result
+        System.out.println("Sum: " + sum);
+    }
+}
+```
+
+**Example 2: Finding Maximum in a List of Integers (Reduction)**
+
+This example uses the reduce method to find the maximum value in a list of integers
+
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class FindMaxExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(5, 3, 10, 40, 2);
+
+        // Using reduce to find the maximum element
+        int max = numbers.stream()
+                         .reduce(Integer.MIN_VALUE, Integer::max);
+
+        // Print the result
+        System.out.println("Maximum: " + max);
+    }
+}
+```
+
+**Example 3: Averaging Numbers (Aggregation)**
+
+This example uses the IntStream to calculate the average of a list of integers
+
+```java
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+
+public class AveragingExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(5, 10, 15, 20, 25);
+
+        // Calculating average using IntStream
+        double average = numbers.stream()
+                                .mapToInt(Integer::intValue)
+                                .average()
+                                .orElse(0.0);
+
+        // Print the result
+        System.out.println("Average: " + average);
+    }
+}
+```
+
+**Example 4: Grouping and Summing (Aggregation)***
+
+This example demonstrates grouping a list of items by a classification function and then summing up one of their attributes
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class GroupingAndSummingExample {
+    static class Product {
+        String category;
+        int price;
+
+        Product(String category, int price) {
+            this.category = category;
+            this.price = price;
+        }
+    }
+
+    public static void main(String[] args) {
+        List<Product> products = Arrays.asList(
+            new Product("electronics", 100),
+            new Product("electronics", 150),
+            new Product("clothing", 80),
+            new Product("clothing", 120)
+        );
+
+        // Grouping products by category and summing their prices
+        Map<String, Integer> categorySum = products.stream()
+                                                   .collect(Collectors.groupingBy(p -> p.category,
+                                                       Collectors.summingInt(p -> p.price)));
+
+        // Print the results
+        System.out.println("Total prices by category: " + categorySum);
+    }
+}
+```
