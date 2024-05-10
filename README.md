@@ -145,3 +145,39 @@ What is a **Stream**?
 How to Create a Stream?
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/7b4167d0-bb0b-4727-8dcc-69e01f365611)
+
+## 1.6. Map, Filter, Reduce
+
+Let’s take a list of Person:
+
+```java
+List<Person> list = new ArrayList<>() ;
+```
+
+Suppose we want to compute the "average of the age of people older than 20"
+
+Let’s first convert it into stream…
+
+```java
+List<Person> persons = new ArrayList<>() ;
+persons.stream()
+```
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/b59c438c-209b-4b4b-aae1-7b15d3aad893)
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/8412180f-b0b1-419d-95c5-fb768a4dc790)
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/3e38bf4b-0834-4937-a58d-036244df804c)
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/5326c0eb-785e-4de3-aca8-dee47edeb515)
+
+![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/655d5cd8-c693-4b3d-864a-cdd84877402f)
+
+
+
+
+
+
+
+
+
