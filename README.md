@@ -280,30 +280,30 @@ public class UnaryOperatorExample {
 
 ## 1.4. Method References
 
-This lambda function:
+This **lambda function** s -> s.toLowerCase():
 
 ```java
 Function<String, String> f = s -> s.toLowerCase();
 ```
-Can be written like:
+Can be written like **method reference** String::toLowerCase:
 
 ```java
 Function<String, String> f = String::toLowerCase;
 f.apply("Hi") // hi
 ```
 
-This lambda expression:
+This **lambda expression** s -> System.out.println(s):
 
 ```java
 Consumer<String> c = s -> System.out.println(s);
 ```
-Can be written like:
+Can be written like **method reference** System.out::println:
 
 ```java
 Consumer<String> c = System.out::println;
 ```
 
-This is the sample for using the above codeÑ
+This is the sample for using the above code:
 
 ```java
 import java.util.List;
@@ -323,13 +323,13 @@ public class Main {
 }
 ```
 
-This lambda expression:
+This **lambda expression** (i1, i2) -> Integer.compare(i1, i2):
 
 ```java
 Comparator<Integer> c = (i1, i2) -> Integer.compare(i1, i2);
 ```
 
-Can be written like:
+Can be written like **method reference** Integer::compare:
 
 ```java
 Comparator<Integer> c = Integer::compare;
@@ -360,7 +360,30 @@ public class Main {
 }
 ```
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/20579c83-8af3-4221-9007-f11d20d34fdc)
+**Another Method reference sample**
+
+However, this method to compare the birth dates of two Person instances already exists as Person.compareByAge
+
+You can invoke this method with a **lambda expression**:
+
+```java
+Arrays.sort(rosterAsArray, (a, b) -> Person.compareByAge(a, b));
+```
+
+```java
+Arrays.sort(rosterAsArray, (Person a, Person b) ->
+{
+    return a.getBirthday().compareTo(b.getBirthday());
+});
+```
+
+Because this lambda expression invokes an existing method, you can use a **method reference** instead of a **lambda expression**:
+
+```java
+Arrays.sort(rosterAsArray, Person::compareByAge);
+```
+
+The **method reference Person::compareByAge** is semantically the **same as the lambda expression (a, b) -> Person.compareByAge(a, b)**
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/0e334b77-d695-4547-840d-65b5cddadb8c)
 
