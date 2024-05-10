@@ -1641,9 +1641,7 @@ public class Main {
 }
 ```
 
-**Example 8: Collecting in a Map**
-
-**Example: Grouping Persons by Age into Lists**
+**Example 8: Collecting in a Map. Grouping Persons by Age into Lists**
 
 This example groups Person objects into a map where each key is the age, and the value is a list of Person objects of that age
 
@@ -1688,7 +1686,7 @@ public class Main {
 }
 ```
 
-**Example: Counting Persons by Age**
+**Example 9: Collecting in a Map. Counting Persons by Age**
 
 This example counts the number of Person objects for each age
 
@@ -1733,7 +1731,7 @@ public class Main {
 }
 ```
 
-**Example: Joining Names of Persons by Age**
+**Example 10: Collecting in a Map. Joining Names of Persons by Age**
 
 Note: The third request seems to have an error because Collectors.joining() is not applicable directly for non-string stream elements in a groupingBy
 
