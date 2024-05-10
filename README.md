@@ -1227,11 +1227,9 @@ This is the output:
 
 **Explanation**
 
-**map Method**: It takes a function (```Function<T, R>```) that transforms each element T of the stream into an element R. In the example, we square each integer
+**map Method**: It takes a function ```Function<T, R>``` that **transforms each element T of the stream into an element R**. In the example, we square each integer
 
-**flatMap Method**: It takes a function (```Function<T, Stream<R>>```) that transforms each element T of the stream into a Stream<R>
-
-This method is very useful for flattening nested structures like lists of lists
+**flatMap Method**: It takes a function ```Function<T, Stream<R>>``` that **transforms each element T of the stream into a Stream<R>**. This method is very useful for flattening nested structures like lists of lists
 
 ## 1.17. Aggregation and Reduction
 
@@ -1448,3 +1446,101 @@ public class OptionalWithStream {
 }
 ```
 
+## 1.19. Collectors
+
+Below are some Java code samples demonstrating the use of Collectors, which is a utility class provided in the Java Stream API to facilitate various **mutable reduction operations on stream elements**
+
+These operations include grouping elements, summarizing elements, and more. Here are a few examples:
+
+**Example 1: Collecting a List**
+
+This example demonstrates how to **collect Stream elements into a list**
+
+```java
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Stream.of(1, 2, 3, 4, 5)
+                                      .collect(Collectors.toList());
+        System.out.println(numbers);
+    }
+}
+```
+
+**Example 2: Grouping By**
+
+This example shows how to **group elements of a stream by a classifier function**
+
+```java
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> words = List.of("apple", "bat", "apricot", "banana", "cherry");
+        Map<Character, List<String>> groupedByFirstLetter = words.stream()
+            .collect(Collectors.groupingBy(word -> word.charAt(0)));
+        System.out.println(groupedByFirstLetter);
+    }
+}
+```
+
+**Example 3: Counting**
+
+This example illustrates how to **count the number of elements in each group after grouping**
+
+```java
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> words = List.of("apple", "bat", "apricot", "banana", "cherry");
+        Map<Character, Long> countByFirstLetter = words.stream()
+            .collect(Collectors.groupingBy(word -> word.charAt(0), Collectors.counting()));
+        System.out.println(countByFirstLetter);
+    }
+}
+```
+
+**Example 4: Joining**
+
+This example shows how to **concatenate elements of a stream into a single string**
+
+```java
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Main {
+    public static void main(String[] args) {
+        String sentence = Stream.of("Java", "is", "cool")
+                                .collect(Collectors.joining(" "));
+        System.out.println(sentence);
+    }
+}
+```
+
+**Example 5: Summarizing**
+
+This example demonstrates how to get summary statistics from a collection of numbers
+
+```java
+import java.util.DoubleSummaryStatistics;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Main {
+    public static void main(String[] args) {
+        DoubleSummaryStatistics stats = Stream.of(1.5, 2.3, 3.7)
+                                              .collect(Collectors.summarizingDouble(Double::doubleValue));
+        System.out.println(stats);
+    }
+}
+```
+
+These examples cover a variety of uses of the Collectors class, providing a strong foundation for understanding how to manipulate collections using Java streams
