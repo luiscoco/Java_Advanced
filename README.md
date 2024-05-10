@@ -280,7 +280,60 @@ public class UnaryOperatorExample {
 
 ## 1.4. Method References
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/74c2e424-4298-441d-bead-aad422b585b0)
+This lambda function:
+
+```java
+Function<String, String> f = s -> s.toLowerCase();
+```
+Can be written like:
+
+```java
+Function<String, String> f = String::toLowerCase;
+f.apply("Hi") // hi
+```
+
+This lambda expression:
+
+```java
+Consumer<String> c = s -> System.out.println(s);
+```
+Can be written like:
+
+```java
+Consumer<String> c = System.out::println;
+```
+
+This is the sample for using the above codeÑ
+
+```java
+import java.util.List;
+import java.util.function.Consumer;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a list of strings
+        List<String> names = List.of("Alice", "Bob", "Charlie", "David");
+
+        // Create a Consumer instance using a method reference
+        Consumer<String> printer = System.out::println;
+
+        // Use the Consumer to print each name in the list
+        names.forEach(printer);
+    }
+}
+```
+
+This lambda expression:
+
+```java
+Comparator<Integer> c = (i1, i2) -> Integer.compare(i1, i2);
+```
+
+Can be written like:
+
+```java
+Comparator<Integer> c = Integer::compare;
+```
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/20579c83-8af3-4221-9007-f11d20d34fdc)
 
