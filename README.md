@@ -335,6 +335,31 @@ Can be written like:
 Comparator<Integer> c = Integer::compare;
 ```
 
+This is a sample for the Comparator code:
+
+```java
+import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a list of integers
+        List<Integer> numbers = List.of(10, 5, 20, 1, 15);
+
+        // Create a Comparator instance using a method reference
+        Comparator<Integer> comparator = Integer::compare;
+
+        // Sort the list using the Comparator
+        List<Integer> sortedNumbers = new ArrayList<>(numbers); // Creating a modifiable list
+        Collections.sort(sortedNumbers, comparator);
+
+        // Print the sorted list
+        System.out.println(sortedNumbers);
+    }
+}
+```
+
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/20579c83-8af3-4221-9007-f11d20d34fdc)
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/0e334b77-d695-4547-840d-65b5cddadb8c)
