@@ -238,6 +238,13 @@ public class ConsumerExample {
 A BiPredicate takes two arguments and returns a boolean
 
 ```java
+@FunctionalInterface
+public interface BiPredicate<T, U> {
+    boolean test(T t, U u);
+}
+```
+
+```java
 import java.util.function.BiPredicate;
 
 public class BiPredicateExample {
@@ -252,6 +259,13 @@ public class BiPredicateExample {
 ### 1.3.6. Unary Operator
 
 A UnaryOperator takes one argument and returns a result of the same type
+
+```java
+@FunctionalInterface
+public interface UnaryOperator<T> extends Function<T, T> {
+    // Inherits the "apply" method from Function
+}
+```
 
 ```java
 import java.util.function.UnaryOperator;
