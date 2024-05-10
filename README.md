@@ -419,7 +419,19 @@ Consumer<T> c = p -> System.out.println(p);
  Stream.of(1,2,3).forEach(c);
 ```
 
+## 1.8. Consumer Chaining
 
+```java
+List<String> list = new ArrayList<>();
+Consumer<String> c1 = s -> list.add(s);
+Consumer<String> c2 = s -> System.out.println(s);
+
+List<String> list = new ArrayList<>();
+Consumer<String> c1 = list::add;
+Consumer<String> c2 = System.out::println;
+Consumer<String> c3 = c1.andThen(c2);
+Stream.of(1,2,3).forEach(c3);
+```
 
 
 
