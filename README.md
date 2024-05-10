@@ -173,9 +173,24 @@ persons.stream()
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/655d5cd8-c693-4b3d-864a-cdd84877402f)
 
+## 1.7. foreach (consumer)
 
+forEach(Consumer consumer) iterates over all stream elements and applies the consumer
 
+```java
+@FunctionalInterface
+public interface Consumer<T> {
+    void accept(T t);
+}
+```
 
+Consumer<T> is a functional interface. It can be implemented by a lambda expression
+
+```java
+Consumer<T> c = p -> System.out.println(p);
+ Consumer<T> c = System.out::println;
+ Stream.of(1,2,3).forEach(c);
+```
 
 
 
