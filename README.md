@@ -1779,6 +1779,8 @@ public class Main {
 
 ## 1.20. Special Stream Types
 
+### 1.20.1. IntStream, DoubleStream, LongStream
+
 **IntStream**: a sequence of primitive **int-valued elements** supporting sequential and parallel aggregate operations
 
 This is the int primitive specialization of Stream
@@ -1915,7 +1917,7 @@ Iterated numbers: [0, 3, 6]
 Concatenated stream values: 10 20 10 
 ```
 
-**Random sample**
+### 1.20.2. Random Streams
 
 ```java
 import java.util.Random;
@@ -1972,3 +1974,118 @@ Second Random instance output:
 **Note**: Instances of Random are thread-safe, but concurrent use across multiple threads can lead to contention and poor performance. Consider using **ThreadLocalRandom** for multithreaded environments
 
 **Note**: Instances of Random are not cryptographically secure. For cryptographic purposes, consider using **SecureRandom**
+
+### 1.20.3. Paralell Streams
+
+Parallel streams in Java are a feature introduced in **Java 8** as part of the **Streams API**
+
+They allow for parallel processing of data on multiple cores, **simplifying the coding of multi-threaded operations**
+
+Here, I'll provide some practical examples of how parallel streams can be used in real-world Java applications
+
+**Example 1: Sum of a List of Numbers**
+
+This example demonstrates how to use a parallel stream to calculate the sum of a list of integers
+
+This is a simple use case where parallelism can speed up the processing on large lists
+
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class ParallelStreamExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        int sum = numbers.parallelStream()
+                         .reduce(0, Integer::sum);
+
+        System.out.println("Sum: " + sum);
+    }
+}
+```
+
+**Example 2: Processing a Large Dataset**
+
+Suppose you have a list of user objects and you want to filter users based on some criteria, transform the results, and then perform an operation like finding the average age
+
+Using a parallel stream can make this process faster
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+class User {
+    String name;
+    int age;
+
+    User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+public class ParallelStreamExample {
+    public static void main(String[] args) {
+        List<User> users = Arrays.asList(
+            new User("Alice", 24),
+            new User("Bob", 30),
+            new User("Charlie", 22),
+            new User("David", 28),
+            new User("Eve", 35)
+        );
+
+        double averageAge = users.parallelStream()
+                                 .filter(u -> u.getAge() > 25)
+                                 .mapToInt(User::getAge)
+                                 .average()
+                                 .orElse(0);
+
+        System.out.println("Average Age: " + averageAge);
+    }
+}
+```
+
+**Example 3: Parallel Stream with Custom Collector**
+
+This example shows how to use a parallel stream with a custom collector to concatenate strings
+
+It's an advanced use case that demonstrates the flexibility of stream operations
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+public class ParallelStreamExample {
+    public static void main(String[] args) {
+        List<String> words = Arrays.asList("hello", "world", "java", "streams", "parallel");
+
+        String concatenated = words.parallelStream()
+                                   .collect(Collectors.joining(", "));
+
+        System.out.println("Concatenated Strings: " + concatenated);
+    }
+}
+```
+
+**Points to Consider**
+
+While parallel streams can provide a significant performance boost, they are not always the best choice for every scenario
+
+Overhead related to thread management and task scheduling can sometimes outweigh the benefits, especially for small datasets or tasks that are not CPU-intensive
+
+The environment also matters—parallel streams perform best in environments with multiple processors that can truly execute the tasks concurrently
+
+Finally, ensure that the operations performed in parallel are thread-safe and that they do not cause unintended side effects
+
