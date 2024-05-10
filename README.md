@@ -1,4 +1,4 @@
-# Java Advanced (Module A): Functional, Asynchronous and Reactive Programming 
+# Java Advanced (Module A): Functional Java: lambda expression, functional interfaces, streams
 
 https://www.programiz.com/java-programming/online-compiler/
 
