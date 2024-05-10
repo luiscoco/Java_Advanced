@@ -1,5 +1,7 @@
 # Java Advanced (Module A): Functional, Asynchronous and Reactive Programming 
 
+https://www.programiz.com/java-programming/online-compiler/
+
 Modules Summary:
 
 A. Functional Java: lambda expression, functional interfaces, streams
@@ -1068,12 +1070,38 @@ System.out.println(resultIdentity);  // Outputs "Hello World"
 **Another sample**
 
 ```java
-UnaryOperator<Integer> f1 = a->a+1;
-UnaryOperator<Integer> f2 = a->a*2; int x = 1;
-System.out.println(f1.andThen(f2).apply(x));	// f2(f1(x)) =4
-System.out.println(f1.compose(f2).apply(x));	// f1(f2(x)) =3
-UnaryOperator<Integer> f3 = UnaryOperator.identity(); print(10, f1);
-print(10, UnaryOperator.identity()); print(10, z->z);
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.function.UnaryOperator;
+
+class HelloWorld {
+    public static void main(String[] args) {
+        UnaryOperator<Integer> f1 = a -> a + 1;
+        UnaryOperator<Integer> f2 = a -> a * 2;
+        int x = 1;
+
+        System.out.println(f1.andThen(f2).apply(x));  // f2(f1(x)) = (1+1)*2 = 4
+        System.out.println(f1.compose(f2).apply(x));  // f1(f2(x)) = 2*1 + 1 = 3
+
+        UnaryOperator<Integer> f3 = UnaryOperator.identity();
+        print(10, f1);
+        print(10, UnaryOperator.identity());
+        print(10, z -> z);
+    }
+
+    // A helper method to print the result of applying the UnaryOperator to a given value
+    private static void print(int value, UnaryOperator<Integer> operator) {
+        System.out.println(operator.apply(value));
+    }
+}
 ```
 
+This is the output:
 
+```
+4
+3
+11
+10
+10
+```
