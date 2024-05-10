@@ -777,4 +777,88 @@ In this case, p.negate() is used, which returns a predicate that is the logical 
 
 Hence, it filters out the string "two" and keeps strings that do not match "two"
 
+## 1.12. peek(Consumer)
 
+In Java, the peek() method is often used with streams to perform intermediate operations
+
+The peek() method takes a Consumer functional interface as an argument and applies it to each element of the stream as they are processed, without changing the elements of the stream
+
+This method is primarily used for debugging purposes, as it allows you to view elements in the stream without altering the flow of the stream operations
+
+Here's a simple example to demonstrate how peek() can be used:
+
+**Example 1: Using peek() for Debugging**
+
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        long count = numbers.stream()
+                .peek(num -> System.out.println("Before filtering: " + num))
+                .filter(num -> num % 2 == 1)
+                .peek(num -> System.out.println("After filtering: " + num))
+                .count();
+
+        System.out.println("Total odd numbers: " + count);
+    }
+}
+```
+
+**Explanation**:
+
+In this example, the peek() method is used twice:
+
+First **peek()** is used before the filter() method. It prints each number as it comes through the stream
+
+Second **peek()** is used after the filter() method to print each number that passes the filter condition (odd numbers in this case)
+
+The **count()** method is a terminal operation that triggers the processing of the stream
+
+It counts the number of elements that have passed through all previous steps
+
+**Example 2: Using peek() to Modify Elements in Mutable Objects**
+
+```java
+import java.util.stream.Stream;
+
+public class Main {
+    static class Person {
+        String name;
+
+        public Person(String name) {
+            this.name = name;
+        }
+
+        void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Person{" + "name='" + name + '\'' + '}';
+        }
+    }
+
+    public static void main(String[] args) {
+        Stream.of(new Person("Alice"), new Person("Bob"), new Person("Charlie"))
+                .peek(person -> person.setName(person.name.toUpperCase()))
+                .forEach(System.out::println);
+    }
+}
+```
+
+**Explanation**:
+
+In this example, Person objects are being processed in a stream
+
+The **peek()** method is used to modify each Person object in the stream by converting their name property to uppercase
+
+The **forEach()** method is a terminal operation that triggers the processing and prints out the modified Person objects
+
+**Note**: While **peek()** is useful for debugging or operations on mutable objects, using it to modify the internal state of an element (as shown in the second example)
+
+is generally discouraged because it can lead to code that is harder to understand and maintain. For such modifications, a map() operation might often be more appropriate and semantically clear
