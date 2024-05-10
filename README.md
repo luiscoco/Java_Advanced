@@ -117,7 +117,13 @@ sayHi.get(); //hi
 
 ## Omitting Parameter
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/eb42d68c-d366-479b-a1d5-260a4ccac7e8)
+```java
+Comparator<String> c = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
+```
+
+```java
+Comparator<String> c = (s1, s2) -> Integer.compare(s1.length(), s2.length());
+```
 
 ## 1.4. Method References
 
