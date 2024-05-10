@@ -433,5 +433,12 @@ Consumer<String> c3 = c1.andThen(c2);
 Stream.of(1,2,3).forEach(c3);
 ```
 
+## 1.9. Predicates Combination
 
+```java
+Predicate<String> p1 = s -> s.length() < 20;
+Predicate<String> p2 = s -> s.length() > 10;
+
+Predicate<String> p3 = p1.and(p2);
+```
 
