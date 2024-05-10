@@ -1781,5 +1781,68 @@ public class Main {
 
 ## 1.20. Special Stream Types
 
+**IntStream**: a sequence of primitive **int-valued elements** supporting sequential and parallel aggregate operations
 
+This is the int primitive specialization of Stream
 
+**Example 1: Using IntStream**
+
+This example demonstrates how to create an IntStream, perform operations such as filtering and mapping, and calculate the sum of the stream elements
+
+```java
+import java.util.stream.IntStream;
+
+public class IntStreamExample {
+    public static void main(String[] args) {
+        // Create an IntStream, filter, map, and sum the results
+        int sum = IntStream.range(1, 10) // Creates a stream from 1 to 9
+                           .filter(n -> n % 2 == 0) // Filters only even numbers
+                           .map(n -> n * n) // Maps each number to its square
+                           .sum(); // Sums the mapped values
+
+        System.out.println("Sum of squares of even numbers from 1 to 9: " + sum);
+    }
+}
+```
+
+**Example 2: Using DoubleStream**
+
+This example shows how to use DoubleStream to generate a stream of doubles, apply mathematical operations, and calculate the average
+
+```java
+import java.util.OptionalDouble;
+import java.util.stream.DoubleStream;
+
+public class DoubleStreamExample {
+    public static void main(String[] args) {
+        // Create a DoubleStream and calculate the average of the elements
+        OptionalDouble average = DoubleStream.of(1.0, 2.5, 3.7, 4.4, 5.9)
+                                             .average(); // Calculates the average
+
+        if (average.isPresent()) {
+            System.out.println("Average: " + average.getAsDouble());
+        } else {
+            System.out.println("No average calculated.");
+        }
+    }
+}
+```
+
+**Example 3: Using LongStream**
+
+This example illustrates how to create a LongStream, perform operations like mapping and reduction, and display the result
+
+```java
+import java.util.stream.LongStream;
+
+public class LongStreamExample {
+    public static void main(String[] args) {
+        // Create a LongStream and calculate the product of elements
+        long product = LongStream.rangeClosed(1, 5) // Creates a stream from 1 to 5
+                                 .map(n -> n * 2) // Maps each number to its double
+                                 .reduce(1, (a, b) -> a * b); // Reduces the stream by multiplying elements together
+
+        System.out.println("Product of doubles from 1 to 5: " + product);
+    }
+}
+```
