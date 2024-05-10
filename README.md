@@ -1917,3 +1917,59 @@ Iterated numbers: [0, 3, 6]
 Concatenated stream values: 10 20 10 
 ```
 
+**Random sample**
+
+```java
+import java.util.Random;
+import java.util.stream.IntStream;
+
+public class RandomTutor {
+
+    public static void main(String[] args) {
+        // Create two Random instances with the same seed
+        long seed = 12345L;
+        Random random1 = new Random(seed);
+        Random random2 = new Random(seed);
+
+        // Generate a stream of 5 pseudorandom integers from each instance
+        System.out.println("First Random instance output:");
+        IntStream stream1 = random1.ints(5, 0, 100);
+        stream1.forEach(System.out::println);
+
+        System.out.println("Second Random instance output:");
+        IntStream stream2 = random2.ints(5, 0, 100);
+        stream2.forEach(System.out::println);
+
+        // Note on thread safety and performance
+        System.out.println("\nNote: Instances of Random are thread-safe, " +
+                           "but concurrent use across multiple threads can lead " +
+                           "to contention and poor performance. Consider using " +
+                           "ThreadLocalRandom for multithreaded environments.");
+
+        // Note on security
+        System.out.println("\nNote: Instances of Random are not cryptographically secure. " +
+                           "For cryptographic purposes, consider using SecureRandom.");
+    }
+}
+```
+
+This is the output:
+
+```
+First Random instance output:
+51
+80
+41
+28
+55
+Second Random instance output:
+51
+80
+41
+28
+55
+```
+
+Note: Instances of Random are thread-safe, but concurrent use across multiple threads can lead to contention and poor performance. Consider using ThreadLocalRandom for multithreaded environments.
+
+Note: Instances of Random are not cryptographically secure. For cryptographic purposes, consider using SecureRandom.
