@@ -125,6 +125,102 @@ Comparator<String> c = (String s1, String s2) -> Integer.compare(s1.length(), s2
 Comparator<String> c = (s1, s2) -> Integer.compare(s1.length(), s2.length());
 ```
 
+### 1.3.1. Supplier
+
+A Supplier provides a result of a given type. It does not accept any arguments
+
+```java
+import java.util.function.Supplier;
+
+public class SupplierExample {
+    public static void main(String[] args) {
+        Supplier<String> stringSupplier = () -> "Hello World";
+        System.out.println(stringSupplier.get());
+    }
+}
+```
+
+### 1.3.2. Predicate
+
+A Predicate takes one argument and returns a boolean
+
+```java
+import java.util.function.Predicate;
+
+public class PredicateExample {
+    public static void main(String[] args) {
+        Predicate<Integer> isPositive = x -> x > 0;
+        System.out.println(isPositive.test(5));  // true
+        System.out.println(isPositive.test(-5)); // false
+    }
+}
+```
+
+### 1.3.3. Function
+
+A Function takes one argument and produces a result
+
+```java
+import java.util.function.Function;
+
+public class FunctionExample {
+    public static void main(String[] args) {
+        Function<Integer, String> convert = x -> "Number: " + x;
+        System.out.println(convert.apply(5));
+    }
+}
+```
+
+### 1.3.4. Consumer / BiConsumer
+
+A Consumer performs an operation on a single argument, whereas a BiConsumer takes two arguments
+
+```java
+import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+
+public class ConsumerExample {
+    public static void main(String[] args) {
+        Consumer<String> printer = System.out::println;
+        printer.accept("Hello Consumer!");
+
+        BiConsumer<Integer, Integer> adder = (a, b) -> System.out.println("Sum: " + (a + b));
+        adder.accept(5, 3);
+    }
+}
+```
+
+### 1.3.5. BiPredicate
+
+A BiPredicate takes two arguments and returns a boolean
+
+```java
+import java.util.function.BiPredicate;
+
+public class BiPredicateExample {
+    public static void main(String[] args) {
+        BiPredicate<Integer, Integer> compare = (a, b) -> a > b;
+        System.out.println(compare.test(5, 3));  // true
+        System.out.println(compare.test(2, 3));  // false
+    }
+}
+```
+
+### 1.3.6. Unary Operator
+
+A UnaryOperator takes one argument and returns a result of the same type
+
+```java
+import java.util.function.UnaryOperator;
+
+public class UnaryOperatorExample {
+    public static void main(String[] args) {
+        UnaryOperator<Integer> square = x -> x * x;
+        System.out.println(square.apply(5));
+    }
+}
+```
+
 ## 1.4. Method References
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/74c2e424-4298-441d-bead-aad422b585b0)
