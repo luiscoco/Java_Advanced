@@ -1544,3 +1544,65 @@ public class Main {
 ```
 
 These examples cover a variety of uses of the Collectors class, providing a strong foundation for understanding how to manipulate collections using Java streams
+
+**Example 6: Collecting in a List**
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+// Define the Person class with age and lastName properties
+class Person {
+    private int age;
+    private String lastName;
+
+    public Person(int age, String lastName) {
+        this.age = age;
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a list of persons
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person(25, "Smith"));
+        persons.add(new Person(19, "Johnson"));
+        persons.add(new Person(30, "Williams"));
+        persons.add(new Person(18, "Jones"));
+        persons.add(new Person(22, "Brown"));
+
+        // Filter persons older than 20 and collect their last names into a list
+        List<String> result = persons.stream()
+                                     .filter(person -> person.getAge() > 20)
+                                     .map(Person::getLastName)
+                                     .collect(Collectors.toList());
+
+        // Print the result
+        System.out.println(result);
+    }
+}
+```
+
+**Example 7: Collecting in a String**
+
+```java
+
+```
+
+**Example 8: Collecting in a Map**
+
+```java
+
+```
+
+## 1.20. 
