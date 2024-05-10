@@ -779,13 +779,13 @@ Hence, it filters out the string "two" and keeps strings that do not match "two"
 
 ## 1.12. peek(Consumer)
 
-In Java, the peek() method is often used with streams to perform intermediate operations
+In Java, the **peek()** method is often used with **streams** to perform **intermediate operations**
 
-The peek() method takes a Consumer functional interface as an argument and applies it to each element of the stream as they are processed, without changing the elements of the stream
+The **peek()** method takes a Consumer functional interface as an argument and applies it to **each element of the stream** as they are processed, without changing the elements of the stream
 
 This method is primarily used for debugging purposes, as it allows you to view elements in the stream without altering the flow of the stream operations
 
-Here's a simple example to demonstrate how peek() can be used:
+Here's a simple example to demonstrate how **peek()** can be used:
 
 **Example 1: Using peek() for Debugging**
 
