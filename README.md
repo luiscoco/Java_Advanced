@@ -1970,6 +1970,6 @@ Second Random instance output:
 55
 ```
 
-Note: Instances of Random are thread-safe, but concurrent use across multiple threads can lead to contention and poor performance. Consider using ThreadLocalRandom for multithreaded environments.
+**Note**: Instances of Random are thread-safe, but concurrent use across multiple threads can lead to contention and poor performance. Consider using **ThreadLocalRandom** for multithreaded environments
 
-Note: Instances of Random are not cryptographically secure. For cryptographic purposes, consider using SecureRandom.
+**Note**: Instances of Random are not cryptographically secure. For cryptographic purposes, consider using **SecureRandom**
