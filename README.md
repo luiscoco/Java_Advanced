@@ -460,3 +460,108 @@ Stream<Person> filtered = stream.filter(person -> person.getAge() > 20);
 Predicate<Person> p = person -> person.getAge() > 20;
 ```
 
+```java
+Predicate<Integer>	p1	=	i	->	i	> 20;
+Predicate<Integer>	p2	=	i	->	i	< 30;
+Predicate<Integer>	p3	=	i	->	i	== 0;
+
+
+Predicate<Integer>	p = p1.and(p2).or(p3); // (p1 && p2) || p3	
+Predicate<Integer>	p = p3.or(p1).and(p2); // p3 || (p1 && p2)	=>	(p3 OR p1) && p2
+```
+
+### Example using Predicate<Person>
+
+First, let's create a Person class and then use the provided ```Predicate<Person>``` to filter out persons over the age of 20
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+               "name='" + name + '\'' +
+               ", age=" + age +
+               '}';
+    }
+}
+
+public class PredicatePersonExample {
+    public static void main(String[] args) {
+        List<Person> people = Arrays.asList(
+            new Person("John", 22),
+            new Person("Sarah", 20),
+            new Person("Jane", 19),
+            new Person("Greg", 32)
+        );
+
+        Predicate<Person> p = person -> person.getAge() > 20;
+        List<Person> filteredPeople = people.stream()
+                                            .filter(p)
+                                            .collect(Collectors.toList());
+        System.out.println(filteredPeople);
+    }
+}
+```
+
+### Example using Predicate<Integer>
+
+Now let's apply the Predicate<Integer> to filter a list of integers based on complex logical conditions
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+public class PredicateIntegerExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(0, 10, 20, 25, 30, 35);
+
+        Predicate<Integer> p1 = i -> i > 20;
+        Predicate<Integer> p2 = i -> i < 30;
+        Predicate<Integer> p3 = i -> i == 0;
+
+        Predicate<Integer> p = p1.and(p2).or(p3);  // (p1 && p2) || p3
+        List<Integer> filteredNumbers = numbers.stream()
+                                               .filter(p)
+                                               .collect(Collectors.toList());
+        System.out.println("Filtered using (p1 && p2) || p3: " + filteredNumbers);
+
+        Predicate<Integer> pAlternative = p3.or(p1).and(p2);  // p3 || (p1 && p2) => (p3 OR p1) && p2
+        List<Integer> filteredNumbersAlt = numbers.stream()
+                                                  .filter(pAlternative)
+                                                  .collect(Collectors.toList());
+        System.out.println("Filtered using p3 || (p1 && p2): " + filteredNumbersAlt);
+    }
+}
+```
+
+In these examples:
+
+The PredicatePersonExample filters persons based on their age being greater than 20
+
+The PredicateIntegerExample demonstrates how to chain and combine predicates to create more complex conditions for filtering integers, which include checking whether numbers are between 20 and 30 or equal to 0
+
+
+
