@@ -310,9 +310,33 @@ What is a **Stream**?
 
 ![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/9a493946-01a3-48fd-a9ca-c2618734d01f)
 
-How to Create a Stream?
+## How to Create a Stream?
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/7b4167d0-bb0b-4727-8dcc-69e01f365611)
+Using static method Stream.of():
+
+```java
+Stream.of(1,2,3);
+```
+
+From array:
+
+```java
+String[] arr = {"one","two","three"};
+stream = Stream.of(arr);
+```		
+
+From collection:
+
+```java
+List<Person> persons;
+Stream<Person> stream = persons.stream();
+```
+
+Using generate():
+
+```java
+Stream<String> stream = Stream.generate(() -> "test").limit(10);
+```
 
 ## 1.6. Map, Filter, Reduce
 
