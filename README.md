@@ -902,3 +902,87 @@ Minimizing work: Operations that might not affect the outcome (like a filter fol
 Short-circuiting: Operations can stop early if the terminal operation allows it (like anyMatch, findFirst, etc.)
 
 Thus, intermediate operations provide a powerful way to build up complex chains of transformations without wasting resources, executing only when the final results are needed
+
+## 1.14. Stream mapping
+
+**Stream mapping** in Java is an operation performed with the **Stream API**, which was introduced in **Java 8**
+
+It allows you to **transform each element in a stream into another form**, usually via the **map** method
+
+This transformation is a common task when working with collections or any set of elements that you wish to modify or extract certain details from
+
+**Using map Function**
+
+The **map** method is used to apply a function to each element of the stream, resulting in a stream of the results of those functions
+
+Here are the key points to understand:
+
+**Transformation**: Converts each element into another form based on the provided function
+
+**Function as a parameter**: The function can be a lambda expression, a method reference, or an instance of a functional interface
+
+**Type Change**: The resultant stream does not necessarily have to be of the same type as the input stream
+
+Here are some practical examples to illustrate these concepts:
+
+**Example 1: Converting a list of names to uppercase**
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+        List<String> upperNames = names.stream()
+                                       .map(String::toUpperCase)
+                                       .collect(Collectors.toList());
+        System.out.println(upperNames);
+    }
+}
+```
+
+This example creates a list of names, converts each name to uppercase using the map method with a method reference String::toUpperCase, and collects the results back into a list
+
+**Example 2: Converting objects**
+
+Suppose we have a list of User objects and we want to extract their email addresses
+
+```java
+class User {
+    String name;
+    String email;
+
+    User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}
+
+public class StreamExample {
+    public static void main(String[] args) {
+        List<User> users = Arrays.asList(
+            new User("Alice", "alice@example.com"),
+            new User("Bob", "bob@example.com")
+        );
+
+        List<String> emails = users.stream()
+                                   .map(User::getEmail)
+                                   .collect(Collectors.toList());
+        System.out.println(emails);
+    }
+}
+```
+
+In this case, the **map** operation extracts the email from each User object by using the getEmail method reference
+
+**Summary**
+
+Stream mapping is a powerful tool in Java for data transformation
+
+By using the map function, you can transform a stream of items into another form efficiently, enabling cleaner and more maintainable code for operations that involve data manipulation
