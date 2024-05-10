@@ -113,7 +113,7 @@ sayHi.get(); //hi
 
 ## Package java.util.function
 
-![image](https://github.com/luiscoco/Java_Advanced/assets/32194879/08a6f283-b861-49c1-bf5f-67bee8e98f62)
+
 
 ## Omitting Parameter
 
@@ -128,6 +128,24 @@ Comparator<String> c = (s1, s2) -> Integer.compare(s1.length(), s2.length());
 ### 1.3.1. Supplier
 
 A Supplier provides a result of a given type. It does not accept any arguments
+
+```java
+package java.util.function;
+
+@FunctionalInterface
+public interface Supplier<T> {
+  T get();
+}
+```
+
+Use of a Supplier:
+
+```java
+Supplier<Integer> supplier = () -> 100;
+System.out.println(supplier.get());
+```
+
+Another sample:
 
 ```java
 import java.util.function.Supplier;
