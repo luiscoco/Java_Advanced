@@ -1,24 +1,24 @@
-# Java Advanced: Functional, Asynchronous and Reactive Programming
+# Java Advanced (Module A): Functional, Asynchronous and Reactive Programming 
 
-Summary:
+Modules Summary:
 
-1. Functional Java: lambda expression, functional interfaces, streams
+A. Functional Java: lambda expression, functional interfaces, streams
 
-2. Executor framework and Fork Join pool
+B. Executor framework and Fork Join pool
 
-3. NIO - non-blocking input/output
+C. NIO - non-blocking input/output
 
-4. Asynchronous Java (Completable Future)
+D. Asynchronous Java (Completable Future)
 
-5. Reactive Streams (Java 9)
+E. Reactive Streams (Java 9)
 
-6. RxJava 2
+F. RxJava 2
 
-7. R2DBC (reactive JDBC replacement)
+G. R2DBC (reactive JDBC replacement)
 
-8. Spring WebFlux (Reactor)
+H. Spring WebFlux (Reactor)
 
-9. Reactive Spring Data JPA
+I. Reactive Spring Data JPA
 
 ## 1. Lambda Expression, Functional Interfaces and Method References
 
